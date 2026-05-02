@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coachproductivite.controller.ProfilController"
+            fitToWidth="true" hbarPolicy="NEVER"
+            style="-fx-background-color:#F6F7FB;
+                   -fx-background:#F6F7FB;">
+
+    <content>
+        <VBox spacing="22" style="-fx-background-color:#F6F7FB;">
+            <padding>
+                <Insets top="28" right="28" bottom="32" left="28"/>
+            </padding>
+
+            <!-- HEADER PROFIL -->
+            <HBox spacing="22" alignment="CENTER_LEFT"
+                  style="-fx-background-color:linear-gradient(to bottom right,#4F46E5,#8B5CF6);
+                         -fx-background-radius:18;
+                         -fx-padding:28 32;">
+
+                <!-- Avatar -->
+                <StackPane>
+                    <Label style="-fx-background-color:white;
+                                  -fx-min-width:90px;-fx-min-height:90px;
+                                  -fx-max-width:90px;-fx-max-height:90px;
+                                  -fx-background-radius:50;
+                                  -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.15),12,0,0,4);"/>
+                    <Label fx:id="avatarGrandLabel" text="GO"
+                           style="-fx-font-size:32px;
+                                  -fx-font-weight:800;
+                                  -fx-text-fill:#4F46E5;"/>
+                </StackPane>
+
+                <VBox HBox.hgrow="ALWAYS" spacing="8">
+                    <Label fx:id="nomAffLabel" text="Utilisateur"
+                           style="-fx-font-size:24px;
+                                  -fx-font-weight:800;
+                                  -fx-text-fill:white;"/>
+                    <Label fx:id="emailAffLabel" text="email@exemple.com"
+                           style="-fx-font-size:13px;
+                                  -fx-text-fill:rgba(255,255,255,0.85);"/>
+                    <HBox spacing="10">
+                        <Label fx:id="badgeNbLabel" text="0 tâches"
+                               style="-fx-background-color:rgba(255,255,255,0.2);
+                                      -fx-text-fill:white;
+                                      -fx-font-size:11px;
+                                      -fx-font-weight:800;
+                                      -fx-padding:6 14;
+                                      -fx-background-radius:20;"/>
+                        <Label fx:id="badgeTauxLabel" text="0%"
+                               style="-fx-background-color:rgba(255,255,255,0.2);
+                                      -fx-text-fill:white;
+                                      -fx-font-size:11px;
+                                      -fx-font-weight:800;
+                                      -fx-padding:6 14;
+                                      -fx-background-radius:20;"/>
+                        <Label fx:id="badgeMembreLabel" text="Membre actif"
+                               style="-fx-background-color:rgba(16,185,129,0.4);
+                                      -fx-text-fill:white;
+                                      -fx-font-size:11px;
+                                      -fx-font-weight:800;
+                                      -fx-padding:6 14;
+                                      -fx-background-radius:20;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- INFOS PERSO + PRÉFÉRENCES côte à côte -->
+            <HBox spacing="16">
+                <!-- INFOS PERSO -->
+                <VBox spacing="16" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;
+                             -fx-border-color:#E5E7EB;
+                             -fx-border-radius:16;
+                             -fx-padding:24;">
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="👤"
+                               style="-fx-font-size:18px;
+                                      -fx-background-color:#EEF2FF;
+                                      -fx-padding:8 12;
+                                      -fx-background-radius:10;"/>
+                        <Label text="Informations personnelles"
+                               style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                    </HBox>
+
+                    <VBox spacing="6">
+                        <Label text="Nom complet"
+                               style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                        <TextField fx:id="nomField"
+                                   style="-fx-background-color:#F9FAFB;
+                                          -fx-border-color:#E5E7EB;
+                                          -fx-border-radius:10;
+                                          -fx-background-radius:10;
+                                          -fx-padding:11 14;"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Email (non modifiable)"
+                               style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                        <TextField fx:id="emailField"
+                                   editable="false"
+                                   style="-fx-background-color:#F3F4F6;
+                                          -fx-border-color:#E5E7EB;
+                                          -fx-border-radius:10;
+                                          -fx-background-radius:10;
+                                          -fx-padding:11 14;
+                                          -fx-text-fill:#9CA3AF;"/>
+                    </VBox>
+
+                    <Label fx:id="msgLabel" text="" style="-fx-font-size:12px;-fx-font-weight:700;"/>
+
+                    <Button text="💾 Sauvegarder"
+                            onAction="#sauvegarderInfos"
+                            maxWidth="Infinity"
+                            style="-fx-background-color:#4F46E5;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:800;
+                                   -fx-padding:12;
+                                   -fx-background-radius:10;
+                                   -fx-cursor:hand;"/>
+                </VBox>
+
+                <!-- PRÉFÉRENCES -->
+                <VBox spacing="16" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;
+                             -fx-border-color:#E5E7EB;
+                             -fx-border-radius:16;
+                             -fx-padding:24;">
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="🎯"
+                               style="-fx-font-size:18px;
+                                      -fx-background-color:#D1FAE5;
+                                      -fx-padding:8 12;
+                                      -fx-background-radius:10;"/>
+                        <Label text="Préférences de travail"
+                               style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                    </HBox>
+
+                    <VBox spacing="6">
+                        <Label text="Mes objectifs"
+                               style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                        <TextArea fx:id="objectifsField"
+                                  promptText="Ex : Réussir mes examens, finir mon projet..."
+                                  wrapText="true"
+                                  prefRowCount="3"
+                                  style="-fx-background-color:#F9FAFB;
+                                         -fx-border-color:#E5E7EB;
+                                         -fx-border-radius:10;
+                                         -fx-background-radius:10;"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Rythme de travail"
+                               style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                        <ComboBox fx:id="rythmeCombo"
+                                  maxWidth="Infinity"
+                                  prefHeight="42"
+                                  style="-fx-background-radius:10;-fx-border-radius:10;"/>
+                    </VBox>
+
+                    <Label fx:id="prefMsgLabel" text="" style="-fx-font-size:12px;-fx-font-weight:700;"/>
+
+                    <Button text="💾 Sauvegarder préférences"
+                            onAction="#sauvegarderPreferences"
+                            maxWidth="Infinity"
+                            style="-fx-background-color:#10B981;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:800;
+                                   -fx-padding:12;
+                                   -fx-background-radius:10;
+                                   -fx-cursor:hand;"/>
+                </VBox>
+            </HBox>
+
+            <!-- SÉCURITÉ -->
+            <VBox spacing="16"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:16;
+                         -fx-border-color:#E5E7EB;
+                         -fx-border-radius:16;
+                         -fx-padding:24;">
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="🔒"
+                           style="-fx-font-size:18px;
+                                  -fx-background-color:#FEF3C7;
+                                  -fx-padding:8 12;
+                                  -fx-background-radius:10;"/>
+                    <VBox spacing="2">
+                        <Label text="Sécurité du compte"
+                               style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                        <Label text="Change ton mot de passe régulièrement"
+                               style="-fx-text-fill:#9CA3AF;-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="14">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Nouveau mot de passe"
+                               style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                        <PasswordField fx:id="newPwField"
+                                       promptText="••••••••"
+                                       style="-fx-background-color:#F9FAFB;
+                                              -fx-border-color:#E5E7EB;
+                                              -fx-border-radius:10;
+                                              -fx-background-radius:10;
+                                              -fx-padding:11 14;"/>
+                        <!-- Indicateur de force -->
+                        <HBox spacing="4" alignment="CENTER_LEFT">
+                            <Label fx:id="forceBar1" style="-fx-min-width:60px;-fx-min-height:4px;-fx-background-color:#E5E7EB;-fx-background-radius:2;"/>
+                            <Label fx:id="forceBar2" style="-fx-min-width:60px;-fx-min-height:4px;-fx-background-color:#E5E7EB;-fx-background-radius:2;"/>
+                            <Label fx:id="forceBar3" style="-fx-min-width:60px;-fx-min-height:4px;-fx-background-color:#E5E7EB;-fx-background-radius:2;"/>
+                            <Label fx:id="forceLabel" text="" style="-fx-font-size:11px;-fx-font-weight:700;-fx-padding:0 0 0 8;"/>
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Confirmer le mot de passe"
+                               style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                        <PasswordField fx:id="confirmPwField"
+                                       promptText="••••••••"
+                                       style="-fx-background-color:#F9FAFB;
+                                              -fx-border-color:#E5E7EB;
+                                              -fx-border-radius:10;
+                                              -fx-background-radius:10;
+                                              -fx-padding:11 14;"/>
+                    </VBox>
+                </HBox>
+
+                <Label fx:id="pwMsgLabel" text="" style="-fx-font-size:12px;-fx-font-weight:700;"/>
+
+                <Button text="🔐 Changer le mot de passe"
+                        onAction="#changerMotDePasse"
+                        style="-fx-background-color:#F59E0B;
+                               -fx-text-fill:white;
+                               -fx-font-weight:800;
+                               -fx-padding:11 18;
+                               -fx-background-radius:10;
+                               -fx-cursor:hand;"/>
+            </VBox>
+
+            <!-- ZONE DANGER -->
+            <VBox spacing="14"
+                  style="-fx-background-color:#FEF2F2;
+                         -fx-background-radius:16;
+                         -fx-border-color:#FECACA;
+                         -fx-border-radius:16;
+                         -fx-padding:22;">
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="⚠️"
+                           style="-fx-font-size:18px;
+                                  -fx-background-color:#FEE2E2;
+                                  -fx-padding:8 12;
+                                  -fx-background-radius:10;"/>
+                    <VBox spacing="2">
+                        <Label text="Zone dangereuse"
+                               style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#991B1B;"/>
+                        <Label text="Actions irréversibles — agis avec précaution"
+                               style="-fx-text-fill:#B91C1C;-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="12">
+                    <Button text="🗑 Supprimer toutes mes tâches"
+                            onAction="#supprimerToutesTaches"
+                            style="-fx-background-color:white;
+                                   -fx-border-color:#FCA5A5;
+                                   -fx-text-fill:#DC2626;
+                                   -fx-font-weight:700;
+                                   -fx-padding:10 16;
+                                   -fx-background-radius:10;
+                                   -fx-border-radius:10;
+                                   -fx-cursor:hand;"/>
+                    <Button text="❌ Se déconnecter"
+                            onAction="#deconnexion"
+                            style="-fx-background-color:#DC2626;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:800;
+                                   -fx-padding:10 16;
+                                   -fx-background-radius:10;
+                                   -fx-cursor:hand;"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </content>
+</ScrollPane>

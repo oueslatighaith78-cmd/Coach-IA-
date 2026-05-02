@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coachproductivite.controller.StatistiquesController"
+            fitToWidth="true" hbarPolicy="NEVER"
+            style="-fx-background-color:#F6F7FB;
+                   -fx-background:#F6F7FB;">
+
+    <content>
+        <VBox spacing="22" style="-fx-background-color:#F6F7FB;">
+            <padding>
+                <Insets top="28" right="28" bottom="32" left="28"/>
+            </padding>
+
+            <!-- HEADER -->
+            <HBox alignment="CENTER_LEFT" spacing="14">
+                <VBox HBox.hgrow="ALWAYS" spacing="4">
+                    <Label text="Statistiques"
+                           style="-fx-font-size:24px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                    <Label text="Analyse de ta productivité et temps de travail"
+                           style="-fx-text-fill:#6B7280;-fx-font-size:13px;"/>
+                </VBox>
+                <Button text="🔄 Actualiser"
+                        onAction="#calculerStats"
+                        style="-fx-background-color:#4F46E5;
+                               -fx-text-fill:white;
+                               -fx-font-weight:800;
+                               -fx-padding:11 18;
+                               -fx-background-radius:12;
+                               -fx-cursor:hand;"/>
+            </HBox>
+
+            <!-- ALERTE TÂCHES EN RETARD -->
+            <HBox fx:id="alerteRetard" spacing="14" alignment="CENTER_LEFT"
+                  visible="false" managed="false"
+                  style="-fx-background-color:linear-gradient(to right,#FEE2E2,#FECACA);
+                         -fx-background-radius:14;
+                         -fx-border-color:#F87171;
+                         -fx-border-radius:14;
+                         -fx-padding:16 20;">
+                <Label text="⚠️" style="-fx-font-size:28px;"/>
+                <VBox HBox.hgrow="ALWAYS" spacing="2">
+                    <Label fx:id="alerteRetardTitre"
+                           text=""
+                           style="-fx-font-size:14px;-fx-font-weight:800;-fx-text-fill:#991B1B;"/>
+                    <Label fx:id="alerteRetardDetail"
+                           text=""
+                           style="-fx-text-fill:#7F1D1D;-fx-font-size:12px;"/>
+                </VBox>
+            </HBox>
+
+            <!-- 4 KPI HEBDO -->
+            <HBox spacing="14">
+                <VBox spacing="8" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;
+                             -fx-border-color:#E5E7EB;
+                             -fx-border-radius:16;
+                             -fx-padding:20;">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="✅"
+                               style="-fx-font-size:18px;
+                                      -fx-background-color:#D1FAE5;
+                                      -fx-padding:8 10;
+                                      -fx-background-radius:10;"/>
+                        <Label text="CETTE SEMAINE"
+                               style="-fx-font-size:10px;-fx-font-weight:800;-fx-text-fill:#6B7280;"/>
+                    </HBox>
+                    <Label fx:id="termineesSemaineLabel" text="0"
+                           style="-fx-font-size:30px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                    <Label text="tâches terminées"
+                           style="-fx-text-fill:#9CA3AF;-fx-font-size:11px;"/>
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:linear-gradient(to bottom right,#6366F1,#8B5CF6);
+                             -fx-background-radius:16;
+                             -fx-padding:20;">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="⏱"
+                               style="-fx-font-size:18px;
+                                      -fx-background-color:rgba(255,255,255,0.2);
+                                      -fx-padding:8 10;
+                                      -fx-background-radius:10;"/>
+                        <Label text="TEMPS TOTAL"
+                               style="-fx-font-size:10px;-fx-font-weight:800;-fx-text-fill:rgba(255,255,255,0.85);"/>
+                    </HBox>
+                    <Label fx:id="tempsTotalLabel" text="0h"
+                           style="-fx-font-size:30px;-fx-font-weight:800;-fx-text-fill:white;"/>
+                    <Label text="travail enregistré"
+                           style="-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:11px;"/>
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:linear-gradient(to bottom right,#F59E0B,#D97706);
+                             -fx-background-radius:16;
+                             -fx-padding:20;">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="🔥"
+                               style="-fx-font-size:18px;
+                                      -fx-background-color:rgba(255,255,255,0.2);
+                                      -fx-padding:8 10;
+                                      -fx-background-radius:10;"/>
+                        <Label text="STREAK"
+                               style="-fx-font-size:10px;-fx-font-weight:800;-fx-text-fill:rgba(255,255,255,0.85);"/>
+                    </HBox>
+                    <Label fx:id="streakLabel" text="0"
+                           style="-fx-font-size:30px;-fx-font-weight:800;-fx-text-fill:white;"/>
+                    <Label text="jours consécutifs"
+                           style="-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:11px;"/>
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:linear-gradient(to bottom right,#10B981,#059669);
+                             -fx-background-radius:16;
+                             -fx-padding:20;">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="📊"
+                               style="-fx-font-size:18px;
+                                      -fx-background-color:rgba(255,255,255,0.2);
+                                      -fx-padding:8 10;
+                                      -fx-background-radius:10;"/>
+                        <Label text="TAUX GLOBAL"
+                               style="-fx-font-size:10px;-fx-font-weight:800;-fx-text-fill:rgba(255,255,255,0.85);"/>
+                    </HBox>
+                    <Label fx:id="tauxLabel" text="0%"
+                           style="-fx-font-size:30px;-fx-font-weight:800;-fx-text-fill:white;"/>
+                    <Label fx:id="tauxDetailLabel"
+                           text="0/0 tâches"
+                           style="-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:11px;"/>
+                </VBox>
+            </HBox>
+
+            <!-- GRAPHIQUE ÉVOLUTION 7 JOURS -->
+            <VBox spacing="14"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:16;
+                         -fx-border-color:#E5E7EB;
+                         -fx-border-radius:16;
+                         -fx-padding:22;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="📈" style="-fx-font-size:18px;"/>
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                        <Label text="Évolution sur 7 jours"
+                               style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                        <Label text="Tâches terminées chaque jour"
+                               style="-fx-text-fill:#9CA3AF;-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+                <BarChart fx:id="evolutionChart"
+                          prefHeight="240"
+                          legendVisible="false"
+                          animated="true"
+                          style="-fx-background-color:transparent;">
+                    <xAxis><CategoryAxis/></xAxis>
+                    <yAxis><NumberAxis/></yAxis>
+                </BarChart>
+            </VBox>
+
+            <!-- 2 PANELS CÔTE À CÔTE -->
+            <HBox spacing="16">
+                <!-- TOP TÂCHES CHRONOMÉTRÉES -->
+                <VBox spacing="14" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;
+                             -fx-border-color:#E5E7EB;
+                             -fx-border-radius:16;
+                             -fx-padding:22;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="⏱" style="-fx-font-size:18px;"/>
+                        <VBox spacing="2">
+                            <Label text="Top 5 — Temps passé"
+                                   style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                            <Label text="Tâches qui t'ont pris le plus de temps"
+                                   style="-fx-text-fill:#9CA3AF;-fx-font-size:11px;"/>
+                        </VBox>
+                    </HBox>
+                    <VBox fx:id="topTachesBox" spacing="10" minHeight="180"/>
+                </VBox>
+
+                <!-- RÉPARTITION CATÉGORIES -->
+                <VBox spacing="14" prefWidth="380"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:16;
+                             -fx-border-color:#E5E7EB;
+                             -fx-border-radius:16;
+                             -fx-padding:22;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="🎯" style="-fx-font-size:18px;"/>
+                        <VBox spacing="2">
+                            <Label text="Par catégorie"
+                                   style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                            <Label text="Répartition de tes tâches"
+                                   style="-fx-text-fill:#9CA3AF;-fx-font-size:11px;"/>
+                        </VBox>
+                    </HBox>
+                    <PieChart fx:id="categorieChart"
+                              prefHeight="220"
+                              legendVisible="true"
+                              labelsVisible="false"
+                              style="-fx-background-color:transparent;"/>
+                </VBox>
+            </HBox>
+
+            <!-- RÉSUMÉ INTELLIGENT -->
+            <VBox spacing="14"
+                  style="-fx-background-color:linear-gradient(to bottom right,#EEF2FF,#F5F3FF);
+                         -fx-background-radius:16;
+                         -fx-border-color:#C7D2FE;
+                         -fx-border-radius:16;
+                         -fx-padding:22;">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="✨"
+                           style="-fx-font-size:20px;
+                                  -fx-background-color:white;
+                                  -fx-padding:8 12;
+                                  -fx-background-radius:50;"/>
+                    <VBox spacing="2">
+                        <Label text="Bilan personnalisé"
+                               style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#3730A3;"/>
+                        <Label text="Conseils basés sur ta productivité"
+                               style="-fx-text-fill:#6366F1;-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+                <Label fx:id="resumeLabel"
+                       text="Chargement..."
+                       wrapText="true"
+                       style="-fx-text-fill:#1E1B4B;-fx-font-size:13px;-fx-line-spacing:4;"/>
+            </VBox>
+
+        </VBox>
+    </content>
+</ScrollPane>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coachproductivite.controller.TacheController"
+            style="-fx-background-color:#F6F7FB;">
+
+    <top>
+        <VBox spacing="14" style="-fx-background-color:#F6F7FB;">
+            <padding>
+                <Insets top="22" right="22" bottom="10" left="22"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="14">
+                <VBox HBox.hgrow="ALWAYS" spacing="4">
+                    <Label text="Mes tâches"
+                           style="-fx-font-size:24px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                    <Label fx:id="nbTachesLabel"
+                           text="0 tâche(s)"
+                           style="-fx-text-fill:#6B7280;-fx-font-size:13px;"/>
+                </VBox>
+
+                <Button text="+ Nouvelle tâche"
+                        onAction="#ouvrirFormulaire"
+                        style="-fx-background-color:#4F46E5;
+                               -fx-text-fill:white;
+                               -fx-font-weight:800;
+                               -fx-padding:11 16;
+                               -fx-background-radius:12;"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField"
+                           promptText="Rechercher une tâche..."
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-background-color:white;
+                                  -fx-border-color:#E5E7EB;
+                                  -fx-border-radius:12;
+                                  -fx-background-radius:12;
+                                  -fx-padding:11 14;"/>
+
+                <ComboBox fx:id="filtreEtatCombo" promptText="État" prefWidth="150"
+                          style="-fx-background-radius:12;-fx-border-radius:12;"/>
+
+                <ComboBox fx:id="filtrePrioriteCombo" promptText="Priorité" prefWidth="150"
+                          style="-fx-background-radius:12;-fx-border-radius:12;"/>
+
+                <ComboBox fx:id="filtreCategorieCombo" promptText="Catégorie" prefWidth="160"
+                          style="-fx-background-radius:12;-fx-border-radius:12;"/>
+
+                <Button text="Réinitialiser"
+                        onAction="#resetFiltres"
+                        style="-fx-background-color:white;
+                               -fx-border-color:#E5E7EB;
+                               -fx-border-radius:12;
+                               -fx-background-radius:12;
+                               -fx-padding:11 14;"/>
+            </HBox>
+
+            <Label fx:id="messageLabel" text="" style="-fx-font-size:12px;-fx-font-weight:700;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="16" style="-fx-background-color:#F6F7FB;">
+            <padding>
+                <Insets top="10" right="22" bottom="22" left="22"/>
+            </padding>
+
+            <!-- TABLEAU -->
+            <VBox spacing="12" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:16;
+                         -fx-border-color:#E5E7EB;
+                         -fx-border-radius:16;
+                         -fx-padding:16;">
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Liste des tâches"
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                </HBox>
+
+                <TableView fx:id="tachesTable"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-background-radius:14;-fx-border-radius:14;">
+                    <columns>
+                        <TableColumn fx:id="titreCol" text="Titre" prefWidth="260"/>
+                        <TableColumn fx:id="prioriteCol" text="Priorité" prefWidth="110"/>
+                        <TableColumn fx:id="etatCol" text="État" prefWidth="110"/>
+                        <TableColumn fx:id="echeanceCol" text="Échéance" prefWidth="120"/>
+                        <TableColumn fx:id="categorieCol" text="Catégorie" prefWidth="120"/>
+                    </columns>
+                    <placeholder>
+                        <VBox alignment="CENTER" spacing="8" style="-fx-padding:45 0;">
+                            <Label text="Aucune tâche"
+                                   style="-fx-font-size:16px;-fx-font-weight:800;-fx-text-fill:#94A3B8;"/>
+                            <Label text="Ajoutez votre première tâche"
+                                   style="-fx-text-fill:#94A3B8;"/>
+                        </VBox>
+                    </placeholder>
+                </TableView>
+            </VBox>
+
+            <!-- PANNEAU DROIT -->
+            <VBox spacing="14" prefWidth="390"
+                  style="-fx-background-color:white;
+                         -fx-background-radius:16;
+                         -fx-border-color:#E5E7EB;
+                         -fx-border-radius:16;
+                         -fx-padding:16;">
+
+                <Label text="Détails"
+                       style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+
+                <VBox spacing="6">
+                    <Label text="Titre" style="-fx-text-fill:#6B7280;-fx-font-size:11px;-fx-font-weight:800;"/>
+                    <Label fx:id="detailTitreLabel" text="—" wrapText="true"
+                           style="-fx-font-size:15px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                </VBox>
+
+                <HBox spacing="12">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Priorité" style="-fx-text-fill:#6B7280;-fx-font-size:11px;-fx-font-weight:800;"/>
+                        <Label fx:id="detailPrioriteLabel" text="—" style="-fx-font-size:13px;-fx-font-weight:700;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="État" style="-fx-text-fill:#6B7280;-fx-font-size:11px;-fx-font-weight:800;"/>
+                        <Label fx:id="detailEtatLabel" text="—" style="-fx-font-size:13px;-fx-font-weight:700;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="12">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Catégorie" style="-fx-text-fill:#6B7280;-fx-font-size:11px;-fx-font-weight:800;"/>
+                        <Label fx:id="detailCategorieLabel" text="—" style="-fx-font-size:13px;-fx-font-weight:700;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Échéance" style="-fx-text-fill:#6B7280;-fx-font-size:11px;-fx-font-weight:800;"/>
+                        <Label fx:id="detailEcheanceLabel" text="—" style="-fx-font-size:13px;-fx-font-weight:700;"/>
+                    </VBox>
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Sous‑tâches"
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-font-size:14px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                    <Label fx:id="nbSousTachesLabel" text="" style="-fx-text-fill:#6B7280;"/>
+                </HBox>
+
+                <ListView fx:id="sousTachesList"
+                          VBox.vgrow="ALWAYS"
+                          style="-fx-background-radius:12;-fx-border-radius:12;"/>
+
+                <!-- BOUTON IA -->
+                <Button fx:id="btnDecomposerIA"
+                        text="✨ Décomposer avec l'IA"
+                        onAction="#decomposerAvecIA"
+                        maxWidth="Infinity"
+                        style="-fx-background-color:linear-gradient(to right,#6366F1,#8B5CF6);
+                               -fx-text-fill:white;
+                               -fx-font-weight:800;
+                               -fx-background-radius:12;
+                               -fx-padding:10 14;
+                               -fx-cursor:hand;"/>
+
+                <HBox spacing="10">
+                    <TextField fx:id="nouvelleSousTacheField"
+                               promptText="Ajouter manuellement..."
+                               HBox.hgrow="ALWAYS"
+                               style="-fx-background-color:white;
+                                      -fx-border-color:#E5E7EB;
+                                      -fx-border-radius:12;
+                                      -fx-background-radius:12;
+                                      -fx-padding:10 12;"/>
+                    <Button text="Ajouter"
+                            onAction="#ajouterSousTache"
+                            style="-fx-background-color:#0EA5E9;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:800;
+                                   -fx-background-radius:12;
+                                   -fx-padding:10 14;"/>
+                </HBox>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnTerminer"
+                            text="✓ Terminer"
+                            onAction="#terminerSelection"
+                            HBox.hgrow="ALWAYS"
+                            style="-fx-background-color:#10B981;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:800;
+                                   -fx-background-radius:12;
+                                   -fx-padding:10 14;"/>
+
+                    <Button fx:id="btnSupprimer"
+                            text="✕ Supprimer"
+                            onAction="#supprimerSelection"
+                            HBox.hgrow="ALWAYS"
+                            style="-fx-background-color:#EF4444;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:800;
+                                   -fx-background-radius:12;
+                                   -fx-padding:10 14;"/>
+                </HBox>
+
+                <Label fx:id="hintSelectionLabel"
+                       text="Sélectionnez une tâche pour voir les détails et ses sous‑tâches."
+                       wrapText="true"
+                       style="-fx-text-fill:#94A3B8;"/>
+            </VBox>
+
+        </HBox>
+    </center>
+</BorderPane>

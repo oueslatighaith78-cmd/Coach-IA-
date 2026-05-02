@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coachproductivite.controller.DashboardController"
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            styleClass="scroll-pane"
+            style="-fx-background-color:#F0F2F5; -fx-background:#F0F2F5;">
+
+    <content>
+        <VBox spacing="26" style="-fx-background-color:#F0F2F5;">
+            <padding>
+                <Insets top="32" right="32" bottom="40" left="32"/>
+            </padding>
+
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="16">
+                <VBox HBox.hgrow="ALWAYS" spacing="4">
+                    <Label text="Tableau de bord" styleClass="page-title"/>
+                    <Label fx:id="dateLabel" text="" styleClass="muted"/>
+                </VBox>
+            </HBox>
+
+            <!-- 4 stat cards -->
+            <HBox spacing="16">
+                <VBox styleClass="stat-card" spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="TÂCHES TOTAL" styleClass="stat-label"/>
+                    <Label fx:id="totalLabel" text="0" styleClass="stat-value"/>
+                    <Label fx:id="totalSubLabel" text="" styleClass="stat-sub"/>
+                </VBox>
+
+                <VBox styleClass="stat-card-green" spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="TERMINÉES" styleClass="stat-label-w"/>
+                    <Label fx:id="termineesLabel" text="0" styleClass="stat-value-w"/>
+                    <Label fx:id="termSubLabel" text="" styleClass="stat-sub-w"/>
+                </VBox>
+
+                <VBox styleClass="stat-card-indigo" spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="TAUX COMPLÉTION" styleClass="stat-label-w"/>
+                    <Label fx:id="tauxLabel" text="0%" styleClass="stat-value-w"/>
+                    <Label text="Performance globale" styleClass="stat-sub-w"/>
+                </VBox>
+
+                <VBox styleClass="stat-card-orange" spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="EN COURS" styleClass="stat-label-w"/>
+                    <Label fx:id="enCoursLabel" text="0" styleClass="stat-value-w"/>
+                    <Label text="À terminer" styleClass="stat-sub-w"/>
+                </VBox>
+            </HBox>
+
+            <!-- Conseil IA -->
+            <VBox styleClass="ia-box" spacing="12">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label style="-fx-background-color:#4F46E5;
+                          -fx-background-radius:50;
+                          -fx-min-width:10px; -fx-min-height:10px;
+                          -fx-max-width:10px; -fx-max-height:10px;"/>
+                    <Label text="Conseil IA du jour" styleClass="ia-title"/>
+                </HBox>
+                <Label fx:id="conseilLabel"
+                       text="Analyse en cours..."
+                       styleClass="ia-text"
+                       wrapText="true"/>
+            </VBox>
+
+            <!-- Tâches récentes -->
+            <VBox spacing="14">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Tâches récentes" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="nbLabel" text="" styleClass="muted"/>
+                </HBox>
+                <VBox fx:id="tachesBox" spacing="10"/>
+            </VBox>
+
+        </VBox>
+    </content>
+</ScrollPane>

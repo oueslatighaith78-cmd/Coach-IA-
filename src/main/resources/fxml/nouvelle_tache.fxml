@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.coachproductivite.controller.NouvelleTacheController"
+      spacing="20"
+      style="-fx-background-color:white; -fx-padding:30;"
+      prefWidth="460">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="✚"
+               style="-fx-background-color:#EEF2FF;
+                      -fx-text-fill:#4F46E5;
+                      -fx-font-size:16px;
+                      -fx-font-weight:800;
+                      -fx-padding:8 12;
+                      -fx-background-radius:10;"/>
+        <VBox spacing="2">
+            <Label text="Nouvelle tâche"
+                   style="-fx-font-size:20px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+            <Label text="Remplissez les informations de votre tâche"
+                   style="-fx-text-fill:#6B7280;-fx-font-size:12px;"/>
+        </VBox>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Titre -->
+    <VBox spacing="6">
+        <HBox spacing="4">
+            <Label text="Titre" style="-fx-font-weight:700;-fx-text-fill:#374151;"/>
+            <Label text="*" style="-fx-text-fill:#EF4444;-fx-font-weight:800;"/>
+        </HBox>
+        <TextField fx:id="titreField"
+                   promptText="Ex : Préparer examen Java, Rapport projet..."
+                   style="-fx-background-color:#F9FAFB;
+                          -fx-border-color:#E5E7EB;
+                          -fx-border-radius:10;
+                          -fx-background-radius:10;
+                          -fx-padding:12 14;
+                          -fx-font-size:13px;"
+                   prefHeight="44"/>
+    </VBox>
+
+    <!-- Description -->
+    <VBox spacing="6">
+        <Label text="Description" style="-fx-font-weight:700;-fx-text-fill:#374151;"/>
+        <TextArea fx:id="descriptionArea"
+                  promptText="Décrivez votre tâche en quelques mots..."
+                  wrapText="true"
+                  prefRowCount="3"
+                  style="-fx-background-color:#F9FAFB;
+                         -fx-border-color:#E5E7EB;
+                         -fx-border-radius:10;
+                         -fx-background-radius:10;
+                         -fx-font-size:13px;"/>
+    </VBox>
+
+    <!-- Priorité + Catégorie -->
+    <HBox spacing="14">
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <HBox spacing="4">
+                <Label text="Priorité" style="-fx-font-weight:700;-fx-text-fill:#374151;"/>
+                <Label text="*" style="-fx-text-fill:#EF4444;-fx-font-weight:800;"/>
+            </HBox>
+            <ComboBox fx:id="prioriteCombo"
+                      promptText="Choisir..."
+                      maxWidth="Infinity"
+                      prefHeight="44"
+                      style="-fx-background-radius:10;
+                             -fx-border-radius:10;
+                             -fx-font-size:13px;"/>
+        </VBox>
+
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="Catégorie" style="-fx-font-weight:700;-fx-text-fill:#374151;"/>
+            <ComboBox fx:id="categorieCombo"
+                      promptText="Choisir..."
+                      maxWidth="Infinity"
+                      prefHeight="44"
+                      style="-fx-background-radius:10;
+                             -fx-border-radius:10;
+                             -fx-font-size:13px;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Échéance -->
+    <VBox spacing="6">
+        <Label text="Échéance" style="-fx-font-weight:700;-fx-text-fill:#374151;"/>
+        <DatePicker fx:id="datePicker"
+                    maxWidth="Infinity"
+                    prefHeight="44"
+                    style="-fx-background-radius:10;-fx-border-radius:10;"/>
+    </VBox>
+
+    <!-- Message erreur -->
+    <Label fx:id="messageLabel"
+           text=""
+           wrapText="true"
+           style="-fx-font-size:12px;-fx-font-weight:700;"
+           minHeight="16"/>
+
+    <Separator/>
+
+    <!-- Boutons -->
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button text="Annuler"
+                onAction="#fermer"
+                prefHeight="42"
+                style="-fx-background-color:white;
+                       -fx-border-color:#D1D5DB;
+                       -fx-border-width:1.5;
+                       -fx-border-radius:10;
+                       -fx-background-radius:10;
+                       -fx-padding:10 20;
+                       -fx-font-weight:700;
+                       -fx-text-fill:#374151;
+                       -fx-cursor:hand;"/>
+
+        <Button text="Créer la tâche"
+                onAction="#creer"
+                prefHeight="42"
+                style="-fx-background-color:#4F46E5;
+                       -fx-text-fill:white;
+                       -fx-background-radius:10;
+                       -fx-padding:10 22;
+                       -fx-font-weight:800;
+                       -fx-font-size:13px;
+                       -fx-cursor:hand;"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.coachproductivite.controller.ChronoController"
+      spacing="24"
+      alignment="TOP_CENTER"
+      style="-fx-background-color:#F6F7FB;">
+    <padding>
+        <Insets top="32" right="40" bottom="32" left="40"/>
+    </padding>
+
+    <Label text="Chronomètre"
+           style="-fx-font-size:24px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+
+    <VBox spacing="28" alignment="CENTER"
+          style="-fx-background-color:white;
+                 -fx-background-radius:16;
+                 -fx-border-color:#E5E7EB;
+                 -fx-border-radius:16;
+                 -fx-padding:40 48;
+                 -fx-max-width:720;">
+
+        <Label text="Temps écoulé"
+               style="-fx-font-size:13px;-fx-font-weight:700;-fx-text-fill:#6B7280;"/>
+
+        <Label fx:id="chronoLabel"
+               text="00 : 00 : 00"
+               style="-fx-font-size:56px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="Tâche :" style="-fx-text-fill:#374151;-fx-font-weight:700;"/>
+            <ComboBox fx:id="tacheChronoCombo"
+                      promptText="Sélectionner une tâche..."
+                      prefWidth="340" prefHeight="44"
+                      style="-fx-background-radius:12;-fx-border-radius:12;"/>
+        </HBox>
+
+        <!-- 3 boutons -->
+        <HBox spacing="12" alignment="CENTER">
+            <Button fx:id="btnStartStop"
+                    text="▶  Démarrer"
+                    onAction="#startStopChrono"
+                    prefWidth="140" prefHeight="46"
+                    style="-fx-background-color:#4F46E5;
+                           -fx-text-fill:white;
+                           -fx-font-weight:800;
+                           -fx-font-size:13px;
+                           -fx-background-radius:12;
+                           -fx-cursor:hand;"/>
+
+            <Button text="✓ Terminer"
+                    onAction="#terminerChrono"
+                    prefWidth="140" prefHeight="46"
+                    style="-fx-background-color:#10B981;
+                           -fx-text-fill:white;
+                           -fx-font-weight:800;
+                           -fx-font-size:13px;
+                           -fx-background-radius:12;
+                           -fx-cursor:hand;"/>
+
+            <Button text="↺  Réinitialiser"
+                    onAction="#resetChrono"
+                    prefWidth="140" prefHeight="46"
+                    style="-fx-background-color:white;
+                           -fx-border-color:#E5E7EB;
+                           -fx-text-fill:#374151;
+                           -fx-font-weight:700;
+                           -fx-font-size:13px;
+                           -fx-background-radius:12;
+                           -fx-border-radius:12;
+                           -fx-cursor:hand;"/>
+        </HBox>
+
+        <Label fx:id="chronoMessageLabel"
+               text=""
+               wrapText="true"
+               alignment="CENTER"
+               maxWidth="560"
+               style="-fx-font-size:13px;-fx-font-weight:700;"/>
+    </VBox>
+
+    <Label text="Cliquez sur Terminer pour enregistrer le temps et marquer la tâche comme terminée."
+           style="-fx-text-fill:#94A3B8;-fx-font-size:12px;"
+           wrapText="true" maxWidth="520" alignment="CENTER"/>
+</VBox>

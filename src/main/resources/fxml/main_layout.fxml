@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.coachproductivite.controller.MainLayoutController"
+            stylesheets="@style.css"
+            prefWidth="1100"
+            prefHeight="700">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="4">
+            <padding>
+                <Insets top="28" right="14" bottom="28" left="14"/>
+            </padding>
+
+            <!-- Logo + user -->
+            <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding:0 4 16 4;">
+                <StackPane>
+                    <Label styleClass="avatar-circle"/>
+                    <Label fx:id="avatarLabel"
+                           text="AK"
+                           styleClass="avatar-text"
+                           StackPane.alignment="CENTER"/>
+                </StackPane>
+
+                <VBox spacing="2">
+                    <Label text="Coach IA" styleClass="sidebar-logo"/>
+                    <Label fx:id="nomLabel"
+                           text="Utilisateur"
+                           styleClass="sidebar-username"/>
+                </VBox>
+            </HBox>
+
+            <Separator style="-fx-padding:0 0 8 0;"/>
+
+            <Label text="MENU"
+                   style="-fx-font-size:10px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:#4B5563;
+                          -fx-padding:12 4 6 4;"/>
+
+            <Button fx:id="btnDashboard"
+                    text="  Tableau de bord"
+                    onAction="#allerDashboard"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn-active"/>
+
+            <Button fx:id="btnTaches"
+                    text="  Mes tâches"
+                    onAction="#allerTaches"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn"/>
+
+            <Button fx:id="btnChrono"
+                    text="  Chronomètre"
+                    onAction="#allerChrono"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn"/>
+
+            <Button fx:id="btnCalendrier"
+                    text="  Calendrier"
+                    onAction="#allerCalendrier"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn"/>
+
+            <Button fx:id="btnIA"
+                    text="  Assistant IA"
+                    onAction="#allerIA"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn"/>
+
+            <Button fx:id="btnStats"
+                    text="  Statistiques"
+                    onAction="#allerStats"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn"/>
+
+            <Button fx:id="btnProfil"
+                    text="  Mon profil"
+                    onAction="#allerProfil"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Separator style="-fx-padding:8 0 0 0;"/>
+
+            <Button text="  Se déconnecter"
+                    onAction="#seDeconnecter"
+                    maxWidth="Infinity"
+                    styleClass="nav-btn-deconnexion"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contenuPrincipal"
+                   style="-fx-background-color:#F0F2F5;"/>
+    </center>
+</BorderPane>

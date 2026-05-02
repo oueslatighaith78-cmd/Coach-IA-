@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.coachproductivite.controller.LoginController"
+      style="-fx-background-color:white;">
+
+    <!-- ===== PANNEAU GAUCHE ===== -->
+    <StackPane HBox.hgrow="ALWAYS" prefWidth="500"
+               style="-fx-background-color:linear-gradient(to bottom right,#4F46E5,#7C3AED,#9333EA);">
+
+        <Circle radius="180" fill="rgba(255,255,255,0.06)"
+                StackPane.alignment="TOP_RIGHT"
+                translateX="100" translateY="-80"/>
+        <Circle radius="120" fill="rgba(255,255,255,0.05)"
+                StackPane.alignment="BOTTOM_LEFT"
+                translateX="-60" translateY="80"/>
+
+        <VBox spacing="32" alignment="CENTER" maxWidth="420">
+            <padding>
+                <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
+
+            <VBox spacing="14" alignment="CENTER">
+                <StackPane>
+                    <Label style="-fx-background-color:rgba(255,255,255,0.15);
+                                  -fx-min-width:80px;-fx-min-height:80px;
+                                  -fx-max-width:80px;-fx-max-height:80px;
+                                  -fx-background-radius:20;"/>
+                    <Label text="✨" style="-fx-font-size:36px;"/>
+                </StackPane>
+
+                <Label text="Coach IA"
+                       style="-fx-font-size:32px;
+                              -fx-font-weight:800;
+                              -fx-text-fill:white;"/>
+                <Label text="Votre assistant de productivité intelligent"
+                       wrapText="true"
+                       alignment="CENTER"
+                       style="-fx-font-size:14px;
+                              -fx-text-fill:rgba(255,255,255,0.85);"/>
+            </VBox>
+
+            <VBox spacing="14"
+                  style="-fx-background-color:rgba(255,255,255,0.12);
+                         -fx-background-radius:18;
+                         -fx-border-color:rgba(255,255,255,0.2);
+                         -fx-border-radius:18;
+                         -fx-padding:22;">
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="📋"
+                           style="-fx-font-size:18px;
+                                  -fx-background-color:rgba(255,255,255,0.2);
+                                  -fx-padding:8 12;
+                                  -fx-background-radius:10;"/>
+                    <VBox spacing="2">
+                        <Label text="Gestion intelligente"
+                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:13px;"/>
+                        <Label text="Organise tes tâches sans effort"
+                               style="-fx-text-fill:rgba(255,255,255,0.7);-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+
+                <Label style="-fx-min-height:1px;-fx-background-color:rgba(255,255,255,0.15);"/>
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="⏱"
+                           style="-fx-font-size:18px;
+                                  -fx-background-color:rgba(255,255,255,0.2);
+                                  -fx-padding:8 12;
+                                  -fx-background-radius:10;"/>
+                    <VBox spacing="2">
+                        <Label text="Chronomètre intégré"
+                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:13px;"/>
+                        <Label text="Suis ton temps de travail réel"
+                               style="-fx-text-fill:rgba(255,255,255,0.7);-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+
+                <Label style="-fx-min-height:1px;-fx-background-color:rgba(255,255,255,0.15);"/>
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="🤖"
+                           style="-fx-font-size:18px;
+                                  -fx-background-color:rgba(255,255,255,0.2);
+                                  -fx-padding:8 12;
+                                  -fx-background-radius:10;"/>
+                    <VBox spacing="2">
+                        <Label text="Assistant IA Gemini"
+                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:13px;"/>
+                        <Label text="Décompose tes objectifs en étapes"
+                               style="-fx-text-fill:rgba(255,255,255,0.7);-fx-font-size:11px;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="6" alignment="CENTER">
+                <Label text="« Concentre-toi sur l'essentiel »"
+                       wrapText="true"
+                       alignment="CENTER"
+                       style="-fx-text-fill:rgba(255,255,255,0.9);
+                              -fx-font-size:12px;
+                              -fx-font-style:italic;"/>
+            </VBox>
+        </VBox>
+    </StackPane>
+
+    <!-- ===== PANNEAU DROIT ===== -->
+    <StackPane HBox.hgrow="ALWAYS" prefWidth="500"
+               style="-fx-background-color:#FAFAFB;">
+
+        <VBox alignment="CENTER" spacing="22" maxWidth="380">
+            <padding>
+                <Insets top="50" right="40" bottom="50" left="40"/>
+            </padding>
+
+            <VBox spacing="6">
+                <Label text="Bienvenue !"
+                       style="-fx-font-size:28px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
+                <Label text="Connecte-toi pour continuer ta progression"
+                       style="-fx-text-fill:#6B7280;-fx-font-size:13px;"/>
+            </VBox>
+
+            <VBox spacing="6">
+                <Label text="Adresse email"
+                       style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                <TextField fx:id="emailField"
+                           promptText="exemple@email.com"
+                           prefHeight="46"
+                           style="-fx-background-color:white;
+                                  -fx-border-color:#E5E7EB;
+                                  -fx-border-radius:12;
+                                  -fx-background-radius:12;
+                                  -fx-padding:11 16;
+                                  -fx-font-size:13px;"/>
+            </VBox>
+
+            <VBox spacing="6">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Mot de passe"
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                    <Hyperlink text="Oublié ?"
+                               style="-fx-text-fill:#4F46E5;-fx-font-size:11px;-fx-font-weight:700;-fx-underline:false;"/>
+                </HBox>
+                <StackPane>
+                    <PasswordField fx:id="passwordField"
+                                   promptText="••••••••"
+                                   prefHeight="46"
+                                   style="-fx-background-color:white;
+                                          -fx-border-color:#E5E7EB;
+                                          -fx-border-radius:12;
+                                          -fx-background-radius:12;
+                                          -fx-padding:11 50 11 16;
+                                          -fx-font-size:13px;"/>
+                    <TextField fx:id="passwordVisibleField"
+                               promptText="••••••••"
+                               prefHeight="46"
+                               visible="false" managed="false"
+                               style="-fx-background-color:white;
+                                      -fx-border-color:#E5E7EB;
+                                      -fx-border-radius:12;
+                                      -fx-background-radius:12;
+                                      -fx-padding:11 50 11 16;
+                                      -fx-font-size:13px;"/>
+                    <Button fx:id="togglePwBtn"
+                            text="👁"
+                            onAction="#togglePassword"
+                            StackPane.alignment="CENTER_RIGHT"
+                            style="-fx-background-color:transparent;
+                                   -fx-text-fill:#9CA3AF;
+                                   -fx-font-size:16px;
+                                   -fx-padding:0 14 0 0;
+                                   -fx-cursor:hand;"/>
+                </StackPane>
+            </VBox>
+
+            <Label fx:id="messageLabel" text=""
+                   wrapText="true"
+                   style="-fx-font-size:12px;-fx-font-weight:700;"/>
+
+            <Button text="Se connecter"
+                    onAction="#seConnecter"
+                    maxWidth="Infinity"
+                    prefHeight="50"
+                    style="-fx-background-color:linear-gradient(to right,#4F46E5,#7C3AED);
+                           -fx-text-fill:white;
+                           -fx-font-weight:800;
+                           -fx-font-size:14px;
+                           -fx-background-radius:12;
+                           -fx-cursor:hand;
+                           -fx-effect:dropshadow(gaussian,rgba(79,70,229,0.4),12,0,0,4);"/>
+
+            <HBox alignment="CENTER" spacing="6">
+                <Label text="Pas encore de compte ?"
+                       style="-fx-text-fill:#6B7280;-fx-font-size:13px;"/>
+                <Hyperlink text="Créer un compte"
+                           onAction="#allerInscription"
+                           style="-fx-text-fill:#4F46E5;
+                                  -fx-font-weight:800;
+                                  -fx-font-size:13px;
+                                  -fx-underline:false;"/>
+            </HBox>
+        </VBox>
+    </StackPane>
+</HBox>
