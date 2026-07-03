@@ -4,7 +4,6 @@ import com.coachproductivite.model.Utilisateur;
 import com.coachproductivite.service.UtilisateurService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -57,23 +56,27 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_layout.fxml"));
             Stage stage = (Stage) emailField.getScene().getWindow();
 
+            // Sauvegarde l'état actuel de la fenêtre
             double width = stage.getWidth();
             double height = stage.getHeight();
+            double x = stage.getX();
+            double y = stage.getY();
             boolean maximized = stage.isMaximized();
 
-            Scene scene = new Scene(loader.load());
+            // Change juste la racine, garde la même Scene → préserve la taille
+            stage.getScene().setRoot(loader.load());
 
             MainLayoutController ctrl = loader.getController();
             ctrl.setUtilisateur(u);
 
-            stage.setScene(scene);
-
+            // Restaure la taille
             if (maximized) {
                 stage.setMaximized(true);
             } else {
                 stage.setWidth(width);
                 stage.setHeight(height);
-                stage.centerOnScreen();
+                stage.setX(x);
+                stage.setY(y);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,18 +90,24 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/inscription.fxml"));
             Stage stage = (Stage) emailField.getScene().getWindow();
 
+            // Sauvegarde l'état
             double width = stage.getWidth();
             double height = stage.getHeight();
+            double x = stage.getX();
+            double y = stage.getY();
             boolean maximized = stage.isMaximized();
 
-            Scene newScene = new Scene(loader.load());
-            stage.setScene(newScene);
+            // Change juste la racine
+            stage.getScene().setRoot(loader.load());
 
+            // Restaure la taille
             if (maximized) {
                 stage.setMaximized(true);
             } else {
                 stage.setWidth(width);
                 stage.setHeight(height);
+                stage.setX(x);
+                stage.setY(y);
             }
         } catch (Exception e) {
             e.printStackTrace();

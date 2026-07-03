@@ -10,100 +10,117 @@
 
     <!-- ===== PANNEAU GAUCHE ===== -->
     <StackPane HBox.hgrow="ALWAYS" prefWidth="500"
-               style="-fx-background-color:linear-gradient(to bottom right,#4F46E5,#7C3AED,#9333EA);">
+               style="-fx-background-color:linear-gradient(to bottom right,#4338CA 0%,#6D28D9 50%,#9333EA 100%);">
 
-        <Circle radius="180" fill="rgba(255,255,255,0.06)"
+        <Circle radius="220" fill="rgba(255,255,255,0.06)"
                 StackPane.alignment="TOP_RIGHT"
-                translateX="100" translateY="-80"/>
-        <Circle radius="120" fill="rgba(255,255,255,0.05)"
+                translateX="120" translateY="-100"/>
+        <Circle radius="140" fill="rgba(255,255,255,0.05)"
                 StackPane.alignment="BOTTOM_LEFT"
-                translateX="-60" translateY="80"/>
+                translateX="-70" translateY="90"/>
 
-        <VBox spacing="32" alignment="CENTER" maxWidth="420">
+        <VBox spacing="36" alignment="CENTER" maxWidth="440">
             <padding>
-                <Insets top="50" right="50" bottom="50" left="50"/>
+                <Insets top="60" right="60" bottom="60" left="60"/>
             </padding>
 
-            <VBox spacing="14" alignment="CENTER">
+            <!-- LOGO GRAPHIQUE (formes géométriques) -->
+            <VBox spacing="20" alignment="CENTER">
                 <StackPane>
-                    <Label style="-fx-background-color:rgba(255,255,255,0.15);
-                                  -fx-min-width:80px;-fx-min-height:80px;
-                                  -fx-max-width:80px;-fx-max-height:80px;
-                                  -fx-background-radius:20;"/>
-                    <Label text="✨" style="-fx-font-size:36px;"/>
+                    <!-- Grand cercle blanc de fond -->
+                    <Circle radius="42" fill="white"
+                            style="-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.2),15,0,0,5);"/>
+                    <!-- Cercle violet superposé -->
+                    <Circle radius="28" fill="#4F46E5" translateX="-8" translateY="-8"/>
+                    <!-- Petit cercle blanc -->
+                    <Circle radius="12" fill="white" translateX="10" translateY="10"/>
                 </StackPane>
 
-                <Label text="Coach IA"
-                       style="-fx-font-size:32px;
-                              -fx-font-weight:800;
-                              -fx-text-fill:white;"/>
-                <Label text="Votre assistant de productivité intelligent"
-                       wrapText="true"
-                       alignment="CENTER"
-                       style="-fx-font-size:14px;
-                              -fx-text-fill:rgba(255,255,255,0.85);"/>
+                <VBox spacing="10" alignment="CENTER">
+                    <HBox alignment="CENTER" spacing="0">
+                        <Label text="Coach"
+                               style="-fx-font-size:36px;
+                                      -fx-font-weight:900;
+                                      -fx-text-fill:white;
+                                      -fx-letter-spacing:-1;"/>
+                        <Label text="IA"
+                               style="-fx-font-size:36px;
+                                      -fx-font-weight:900;
+                                      -fx-text-fill:#FCD34D;
+                                      -fx-letter-spacing:-1;"/>
+                    </HBox>
+                    <Label text="L'assistant qui booste votre productivité"
+                           wrapText="true"
+                           alignment="CENTER"
+                           style="-fx-font-size:14px;
+                                  -fx-text-fill:rgba(255,255,255,0.85);
+                                  -fx-font-weight:400;"/>
+                </VBox>
             </VBox>
 
-            <VBox spacing="14"
-                  style="-fx-background-color:rgba(255,255,255,0.12);
-                         -fx-background-radius:18;
+            <!-- Features avec vrais mini-badges design -->
+            <VBox spacing="16"
+                  style="-fx-background-color:rgba(255,255,255,0.1);
+                         -fx-background-radius:20;
                          -fx-border-color:rgba(255,255,255,0.2);
-                         -fx-border-radius:18;
-                         -fx-padding:22;">
+                         -fx-border-radius:20;
+                         -fx-border-width:1;
+                         -fx-padding:26;
+                         -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,6);">
 
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="📋"
-                           style="-fx-font-size:18px;
-                                  -fx-background-color:rgba(255,255,255,0.2);
-                                  -fx-padding:8 12;
-                                  -fx-background-radius:10;"/>
-                    <VBox spacing="2">
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane>
+                        <Circle radius="22" fill="rgba(255,255,255,0.2)"/>
+                        <Label text="📋"
+                               style="-fx-font-size:18px;"/>
+                    </StackPane>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
                         <Label text="Gestion intelligente"
-                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:13px;"/>
-                        <Label text="Organise tes tâches sans effort"
-                               style="-fx-text-fill:rgba(255,255,255,0.7);-fx-font-size:11px;"/>
+                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:14px;"/>
+                        <Label text="Organisez, priorisez et suivez sans effort"
+                               style="-fx-text-fill:rgba(255,255,255,0.75);-fx-font-size:12px;"/>
                     </VBox>
                 </HBox>
 
                 <Label style="-fx-min-height:1px;-fx-background-color:rgba(255,255,255,0.15);"/>
 
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="⏱"
-                           style="-fx-font-size:18px;
-                                  -fx-background-color:rgba(255,255,255,0.2);
-                                  -fx-padding:8 12;
-                                  -fx-background-radius:10;"/>
-                    <VBox spacing="2">
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane>
+                        <Circle radius="22" fill="rgba(255,255,255,0.2)"/>
+                        <Label text="⏱"
+                               style="-fx-font-size:18px;"/>
+                    </StackPane>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
                         <Label text="Chronomètre intégré"
-                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:13px;"/>
-                        <Label text="Suis ton temps de travail réel"
-                               style="-fx-text-fill:rgba(255,255,255,0.7);-fx-font-size:11px;"/>
+                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:14px;"/>
+                        <Label text="Mesurez précisément votre temps de travail"
+                               style="-fx-text-fill:rgba(255,255,255,0.75);-fx-font-size:12px;"/>
                     </VBox>
                 </HBox>
 
                 <Label style="-fx-min-height:1px;-fx-background-color:rgba(255,255,255,0.15);"/>
 
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="🤖"
-                           style="-fx-font-size:18px;
-                                  -fx-background-color:rgba(255,255,255,0.2);
-                                  -fx-padding:8 12;
-                                  -fx-background-radius:10;"/>
-                    <VBox spacing="2">
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane>
+                        <Circle radius="22" fill="rgba(252,211,77,0.3)"/>
+                        <Label text="✨"
+                               style="-fx-font-size:18px;"/>
+                    </StackPane>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
                         <Label text="Assistant IA Gemini"
-                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:13px;"/>
-                        <Label text="Décompose tes objectifs en étapes"
-                               style="-fx-text-fill:rgba(255,255,255,0.7);-fx-font-size:11px;"/>
+                               style="-fx-font-weight:800;-fx-text-fill:white;-fx-font-size:14px;"/>
+                        <Label text="Décomposez vos objectifs en étapes concrètes"
+                               style="-fx-text-fill:rgba(255,255,255,0.75);-fx-font-size:12px;"/>
                     </VBox>
                 </HBox>
             </VBox>
 
             <VBox spacing="6" alignment="CENTER">
-                <Label text="« Concentre-toi sur l'essentiel »"
+                <Label text="« Concentrez-vous sur l'essentiel »"
                        wrapText="true"
                        alignment="CENTER"
                        style="-fx-text-fill:rgba(255,255,255,0.9);
-                              -fx-font-size:12px;
+                              -fx-font-size:13px;
                               -fx-font-style:italic;"/>
             </VBox>
         </VBox>
@@ -111,78 +128,89 @@
 
     <!-- ===== PANNEAU DROIT ===== -->
     <StackPane HBox.hgrow="ALWAYS" prefWidth="500"
-               style="-fx-background-color:#FAFAFB;">
+               style="-fx-background-color:#FAFBFC;">
 
-        <VBox alignment="CENTER" spacing="22" maxWidth="380">
+        <VBox alignment="CENTER" spacing="26" maxWidth="380">
             <padding>
-                <Insets top="50" right="40" bottom="50" left="40"/>
+                <Insets top="60" right="50" bottom="60" left="50"/>
             </padding>
 
-            <VBox spacing="6">
-                <Label text="Bienvenue !"
-                       style="-fx-font-size:28px;-fx-font-weight:800;-fx-text-fill:#111827;"/>
-                <Label text="Connecte-toi pour continuer ta progression"
-                       style="-fx-text-fill:#6B7280;-fx-font-size:13px;"/>
+            <!-- Header -->
+            <VBox spacing="10">
+                <Label text="Bon retour !"
+                       style="-fx-font-size:32px;
+                              -fx-font-weight:900;
+                              -fx-text-fill:#0F172A;
+                              -fx-letter-spacing:-0.5;"/>
+                <Label text="Connectez-vous pour continuer votre progression"
+                       style="-fx-text-fill:#64748B;-fx-font-size:14px;"/>
             </VBox>
 
-            <VBox spacing="6">
+            <!-- Email -->
+            <VBox spacing="8">
                 <Label text="Adresse email"
-                       style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                       style="-fx-font-weight:700;-fx-text-fill:#334155;-fx-font-size:12px;-fx-letter-spacing:0.3;"/>
                 <TextField fx:id="emailField"
-                           promptText="exemple@email.com"
-                           prefHeight="46"
+                           promptText="nom@exemple.com"
+                           prefHeight="48"
                            style="-fx-background-color:white;
-                                  -fx-border-color:#E5E7EB;
-                                  -fx-border-radius:12;
-                                  -fx-background-radius:12;
+                                  -fx-border-color:#CBD5E1;
+                                  -fx-border-radius:10;
+                                  -fx-background-radius:10;
+                                  -fx-border-width:1.5;
                                   -fx-padding:11 16;
-                                  -fx-font-size:13px;"/>
+                                  -fx-font-size:14px;"/>
             </VBox>
 
-            <VBox spacing="6">
+            <!-- Mot de passe -->
+            <VBox spacing="8">
                 <HBox alignment="CENTER_LEFT">
                     <Label text="Mot de passe"
                            HBox.hgrow="ALWAYS"
-                           style="-fx-font-weight:700;-fx-text-fill:#374151;-fx-font-size:12px;"/>
+                           style="-fx-font-weight:700;-fx-text-fill:#334155;-fx-font-size:12px;-fx-letter-spacing:0.3;"/>
                     <Hyperlink text="Oublié ?"
                                style="-fx-text-fill:#4F46E5;-fx-font-size:11px;-fx-font-weight:700;-fx-underline:false;"/>
                 </HBox>
                 <StackPane>
                     <PasswordField fx:id="passwordField"
                                    promptText="••••••••"
-                                   prefHeight="46"
+                                   prefHeight="48"
                                    style="-fx-background-color:white;
-                                          -fx-border-color:#E5E7EB;
-                                          -fx-border-radius:12;
-                                          -fx-background-radius:12;
-                                          -fx-padding:11 50 11 16;
-                                          -fx-font-size:13px;"/>
+                                          -fx-border-color:#CBD5E1;
+                                          -fx-border-radius:10;
+                                          -fx-background-radius:10;
+                                          -fx-border-width:1.5;
+                                          -fx-padding:11 60 11 16;
+                                          -fx-font-size:14px;"/>
                     <TextField fx:id="passwordVisibleField"
                                promptText="••••••••"
-                               prefHeight="46"
+                               prefHeight="48"
                                visible="false" managed="false"
                                style="-fx-background-color:white;
-                                      -fx-border-color:#E5E7EB;
-                                      -fx-border-radius:12;
-                                      -fx-background-radius:12;
-                                      -fx-padding:11 50 11 16;
-                                      -fx-font-size:13px;"/>
+                                      -fx-border-color:#CBD5E1;
+                                      -fx-border-radius:10;
+                                      -fx-background-radius:10;
+                                      -fx-border-width:1.5;
+                                      -fx-padding:11 60 11 16;
+                                      -fx-font-size:14px;"/>
                     <Button fx:id="togglePwBtn"
                             text="👁"
                             onAction="#togglePassword"
                             StackPane.alignment="CENTER_RIGHT"
                             style="-fx-background-color:transparent;
-                                   -fx-text-fill:#9CA3AF;
+                                   -fx-text-fill:#94A3B8;
                                    -fx-font-size:16px;
                                    -fx-padding:0 14 0 0;
                                    -fx-cursor:hand;"/>
                 </StackPane>
             </VBox>
 
+            <!-- Message -->
             <Label fx:id="messageLabel" text=""
                    wrapText="true"
                    style="-fx-font-size:12px;-fx-font-weight:700;"/>
 
+            <!-- Bouton -->
             <Button text="Se connecter"
                     onAction="#seConnecter"
                     maxWidth="Infinity"
@@ -191,13 +219,18 @@
                            -fx-text-fill:white;
                            -fx-font-weight:800;
                            -fx-font-size:14px;
-                           -fx-background-radius:12;
+                           -fx-background-radius:10;
                            -fx-cursor:hand;
-                           -fx-effect:dropshadow(gaussian,rgba(79,70,229,0.4),12,0,0,4);"/>
+                           -fx-effect:dropshadow(gaussian,rgba(79,70,229,0.4),15,0,0,5);"/>
 
+            <!-- Séparateur discret -->
+            <Label style="-fx-min-height:1px;-fx-pref-height:1px;-fx-background-color:#E2E8F0;"
+                   maxWidth="Infinity"/>
+
+            <!-- Lien inscription -->
             <HBox alignment="CENTER" spacing="6">
-                <Label text="Pas encore de compte ?"
-                       style="-fx-text-fill:#6B7280;-fx-font-size:13px;"/>
+                <Label text="Nouveau ici ?"
+                       style="-fx-text-fill:#64748B;-fx-font-size:13px;"/>
                 <Hyperlink text="Créer un compte"
                            onAction="#allerInscription"
                            style="-fx-text-fill:#4F46E5;

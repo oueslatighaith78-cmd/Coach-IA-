@@ -4,7 +4,6 @@ import com.coachproductivite.service.UtilisateurService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -93,7 +92,7 @@ public class InscriptionController {
     }
 
     private String barStyle(String color) {
-        return "-fx-min-width:80px;-fx-min-height:4px;-fx-background-color:" + color + ";-fx-background-radius:2;";
+        return "-fx-min-width:70px;-fx-min-height:4px;-fx-background-color:" + color + ";-fx-background-radius:2;";
     }
 
     @FXML
@@ -117,13 +116,13 @@ public class InscriptionController {
 
         boolean ok = us.inscrire(nom, email, mdp);
         if (ok) {
-            msg("✓ Compte créé ! Redirection vers la connexion...", true);
+            msg("Compte créé avec succès. Redirection...", true);
             new Thread(() -> {
                 try { Thread.sleep(1200); } catch (InterruptedException ignored) {}
                 Platform.runLater(this::allerLogin);
             }).start();
         } else {
-            msg("Email déjà utilisé ou erreur lors de l'inscription.", false);
+            msg("Cet email est déjà utilisé.", false);
         }
     }
 
@@ -133,18 +132,24 @@ public class InscriptionController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
             Stage stage = (Stage) emailField.getScene().getWindow();
 
+            // Sauvegarde l'état
             double width = stage.getWidth();
             double height = stage.getHeight();
+            double x = stage.getX();
+            double y = stage.getY();
             boolean maximized = stage.isMaximized();
 
-            Scene newScene = new Scene(loader.load());
-            stage.setScene(newScene);
+            // Change juste la racine
+            stage.getScene().setRoot(loader.load());
 
+            // Restaure la taille
             if (maximized) {
                 stage.setMaximized(true);
             } else {
                 stage.setWidth(width);
                 stage.setHeight(height);
+                stage.setX(x);
+                stage.setY(y);
             }
         } catch (Exception e) {
             e.printStackTrace();
