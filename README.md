@@ -79,31 +79,9 @@ Les étudiants et jeunes professionnels souffrent de :
 
 ---
 
-## 🖼 Aperçu
 
-> 📸 *Screenshots à ajouter*
 
-<div align="center">
 
-### 🔐 Page de connexion
-`[Ajouter screenshot login]`
-
-### 📊 Tableau de bord
-`[Ajouter screenshot dashboard]`
-
-### 📋 Gestion des tâches
-`[Ajouter screenshot tâches]`
-
-### 🤖 Assistant IA
-`[Ajouter screenshot IA]`
-
-### 📅 Calendrier
-`[Ajouter screenshot calendrier]`
-
-### 📊 Statistiques
-`[Ajouter screenshot stats]`
-
-</div>
 
 ---
 
